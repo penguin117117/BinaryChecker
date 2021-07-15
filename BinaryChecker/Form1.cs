@@ -46,8 +46,16 @@ namespace BinaryChecker
             file1 = File.ReadAllBytes(filepath01);
             file2 = File.ReadAllBytes(filepath02);
 
-            var bincount1 = file1.Count();
-            var bincount2 = file2.Count();
+            int bincount1 = 0;
+            int bincount2 = 0;
+            try {
+                bincount1 = file1.Count();
+                bincount2 = file2.Count();
+            } catch (Exception exc) {
+                MessageBox.Show("ファイルサイズが大きすぎます"+"\n\r"+exc.Message,"エラー",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                this.Close();
+            }
+            
 
             if (bincount1 != bincount2) {
                 textBox1.Text = "バイナリのサイズが違います" + Environment.NewLine;
@@ -65,11 +73,22 @@ namespace BinaryChecker
         }
 
         public void BinChecker(int bincount , byte[] bit1 , byte[] bit2) {
+            textBox1.Visible = false;
+            button1.Enabled = false;
+            toolStripProgressBar1.Minimum = 0;
+            toolStripProgressBar1.Maximum = bincount;
+            toolStripProgressBar1.Value = 0;
             for (int i = 0; i < bincount; i++)
             {
+                toolStripProgressBar1.Value++;
                 if (bit1[i] == bit2[i]) continue;
-                textBox1.AppendText("開いたファイル_"+bit1[i].ToString("X2") + " 比較対象ファイル_" + bit2[i].ToString("X2") + "_位置_" + i.ToString("X2") + Environment.NewLine);
+                textBox1.AppendText("開いたファイル "+bit1[i].ToString("X2") + "  比較対象ファイル " + bit2[i].ToString("X2") + "  位置 " + i.ToString("X8") + Environment.NewLine);
+                
+                Application.DoEvents();
             }
+            System.Threading.Thread.Sleep(10);
+            textBox1.Visible = true;
+            button1.Enabled = true;
         }
 
         private void Form1_DragDrop(object sender, DragEventArgs e)
