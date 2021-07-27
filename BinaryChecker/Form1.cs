@@ -78,14 +78,16 @@ namespace BinaryChecker
             toolStripProgressBar1.Minimum = 0;
             toolStripProgressBar1.Maximum = bincount;
             toolStripProgressBar1.Value = 0;
+            int MissCounter = 0;
             for (int i = 0; i < bincount; i++)
             {
                 toolStripProgressBar1.Value++;
                 if (bit1[i] == bit2[i]) continue;
                 textBox1.AppendText("開いたファイル "+bit1[i].ToString("X2") + "  比較対象ファイル " + bit2[i].ToString("X2") + "  位置 " + i.ToString("X8") + Environment.NewLine);
-                
+                MissCounter++;
                 Application.DoEvents();
             }
+            label3.Text = MissCounter.ToString();
             System.Threading.Thread.Sleep(10);
             textBox1.Visible = true;
             button1.Enabled = true;
@@ -95,8 +97,28 @@ namespace BinaryChecker
         {
             string[] fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             var filecount = fileName.Count();
-            Console.WriteLine(fileName[0]);
-            Console.WriteLine(fileName[1]);
+            //Console.WriteLine(fileName[0]);
+            //Console.WriteLine(fileName[1]);
+            if (filecount == 1) {
+                var yesno = MessageBox.Show("開いたファイルとして読み込みますか？","質問",MessageBoxButtons.YesNo,MessageBoxIcon.Information);
+                switch (yesno) {
+                    case DialogResult.Yes:
+                        if (File.Exists(fileName[0]) == false) return;
+                        filepath01 = fileName[0];
+                        toolStripStatusLabel2.Text = Path.GetFileName(fileName[0]);
+                        break;
+                    case DialogResult.No:
+                        if (File.Exists(fileName[0]) == false) return;
+                        filepath02 = fileName[0];
+                        toolStripStatusLabel5.Text = Path.GetFileName(fileName[0]);
+                        break;
+                    default:
+                        MessageBox.Show("はい、またはいいえが選択されなかったので処理しませんでした。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+
+                }
+
+            }
             if (filecount == 2) {
                 if (File.Exists(fileName[0]) == false) return;
                 filepath01 = fileName[0];

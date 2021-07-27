@@ -39,10 +39,12 @@ namespace BinaryChecker
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -125,6 +127,12 @@ namespace BinaryChecker
             this.toolStripStatusLabel5.Size = new System.Drawing.Size(71, 17);
             this.toolStripStatusLabel5.Text = "読み込みなし";
             // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -154,11 +162,23 @@ namespace BinaryChecker
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // toolStripProgressBar1
+            // label2
             // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(258, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 12);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "異なるバイト数";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(339, 24);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(11, 12);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "0";
             // 
             // Form1
             // 
@@ -166,6 +186,8 @@ namespace BinaryChecker
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
@@ -201,6 +223,8 @@ namespace BinaryChecker
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 
