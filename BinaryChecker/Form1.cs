@@ -73,20 +73,29 @@ namespace BinaryChecker
         }
 
         public void BinChecker(int bincount , byte[] bit1 , byte[] bit2) {
+            
+            //string NotMatch = string.Empty;
             textBox1.Visible = false;
             button1.Enabled = false;
             toolStripProgressBar1.Minimum = 0;
             toolStripProgressBar1.Maximum = bincount;
             toolStripProgressBar1.Value = 0;
             int MissCounter = 0;
+
+            
+            StringBuilder sb = new StringBuilder(bincount);
             for (int i = 0; i < bincount; i++)
             {
                 toolStripProgressBar1.Value++;
                 if (bit1[i] == bit2[i]) continue;
-                textBox1.AppendText("開いたファイル "+bit1[i].ToString("X2") + "  比較対象ファイル " + bit2[i].ToString("X2") + "  位置 " + i.ToString("X8") + Environment.NewLine);
+                sb.Append("開いたファイル " + bit1[i].ToString("X2") + "  比較対象ファイル " + bit2[i].ToString("X2") + "  位置 " + i.ToString("X8") + Environment.NewLine);
+                //textBox1.AppendText("開いたファイル " + bit1[i].ToString("X2") + "  比較対象ファイル " + bit2[i].ToString("X2") + "  位置 " + i.ToString("X8") + Environment.NewLine);
+                //NotMatch += "開いたファイル " + bit1[i].ToString("X2") + "  比較対象ファイル " + bit2[i].ToString("X2") + "  位置 " + i.ToString("X8") + Environment.NewLine;
                 MissCounter++;
                 Application.DoEvents();
             }
+            textBox1.AppendText(sb.ToString());
+            //textBox1.Text = NotMatch;
             label3.Text = MissCounter.ToString();
             System.Threading.Thread.Sleep(10);
             textBox1.Visible = true;

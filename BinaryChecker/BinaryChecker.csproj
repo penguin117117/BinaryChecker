@@ -7,7 +7,7 @@
     <ProjectGuid>{E5824A3E-A29C-4A23-81C0-7D1EDC81E6E7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>BinaryChecker</RootNamespace>
-    <AssemblyName>BinaryChecker_ver0.1.1.0</AssemblyName>
+    <AssemblyName>BinaryChecker_ver0.1.2.0</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -27,7 +27,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\BinaryChecker_ver0.1.1.0\</OutputPath>
+    <OutputPath>bin\Release\BinaryChecker_ver0.1.2.0\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
